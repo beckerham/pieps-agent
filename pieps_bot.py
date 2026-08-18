@@ -48,10 +48,18 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
 
 def main() -> None:
+    port = int(os.environ.get("PORT", 8000))
+    webhook_url = os.getenv("WEBHOOK_URL")
+
     app = Application.builder().token(TELEGRAM_TOKEN).build()
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-    print("PIEPS-Bot gestartet. Abbruch mit Ctrl+C.")
-    app.run_polling()
+    print(f"PIEPS-Bot gestartet (Webhook auf Port {port}).")
+    app.run_webhook(
+        listen="0.0.0.0",
+        port=port,
+        url_path=TELEGRAM_TOKEN,
+        webhook_url=f"{webhook_url}/{TELEGRAM_TOKEN}",
+    )
 
 
 if __name__ == "__main__":
