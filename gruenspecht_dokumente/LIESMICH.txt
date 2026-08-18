@@ -1,0 +1,14 @@
+Grünspecht Gartentechnik GmbH – Übungsdokumente
+===============================================
+
+Diese Dokumente sind frei erfunden. Sie dienen ausschließlich
+als Übungsmaterial für den Kurs 'PIEPS – Bau dir deinen eigenen
+KI-Agenten'.
+
+Entpacke diesen Ordner in dein Projektverzeichnis, sodass der
+Pfad so aussieht:
+
+    pieps/gruenspecht_dokumente/*.pdf
+
+Schau dir die Dokumente in Checkpoint 9 zuerst an, bevor du
+mit dem Programmieren beginnst.
