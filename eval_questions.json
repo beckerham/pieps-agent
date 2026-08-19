@@ -1,0 +1,19 @@
+[
+  {"id":  1, "frage": "Wo ist meine Bestellung GS-2026-0042?", "erwartet": "DHL-771234567", "sorte": "bestellung"},
+  {"id":  2, "frage": "Was ist der Status von Bestellung GS-2026-0043?", "erwartet": "bearbeitet", "sorte": "bestellung"},
+  {"id":  3, "frage": "Was ist mit meiner Bestellung GS-2026-0044 passiert?", "erwartet": "storniert", "sorte": "bestellung"},
+  {"id":  4, "frage": "Wo ist meine Bestellung GS-2026-9999?", "erwartet": "keine Bestellung", "sorte": "bestellung-fehler"},
+  {"id":  5, "frage": "Was kostet der RASENFLITZER 3000?", "erwartet": "999", "sorte": "preis"},
+  {"id":  6, "frage": "Was kostet der RASENFLITZER 1000?", "erwartet": "nicht mehr", "sorte": "preis"},
+  {"id":  7, "frage": "Wie lange gilt die Garantie auf meinen Mähroboter?", "erwartet": "Jahr", "sorte": "garantie"},
+  {"id":  8, "frage": "Was bedeutet Fehlercode E3 beim RASENFLITZER?", "erwartet": "Fehler", "sorte": "technik"},
+  {"id":  9, "frage": "Welche Ersatzteile gibt es für den RASENFLITZER 2000?", "erwartet": "Messer", "sorte": "ersatzteile"},
+  {"id": 10, "frage": "Wann kann ich euren Kundenservice erreichen?", "erwartet": "17:00", "sorte": "kontakt"},
+  {"id": 11, "frage": "Wie lautet die E-Mail-Adresse des Kundenservice?", "erwartet": "support@gruenspecht.de", "sorte": "kontakt"},
+  {"id": 12, "frage": "Wie lange habe ich Widerrufsrecht?", "erwartet": "Widerrufsrecht", "sorte": "recht"},
+  {"id": 13, "frage": "Wie lange dauert die Lieferung wenn ich heute bestelle?", "erwartet": "Werktag", "sorte": "lieferung"},
+  {"id": 14, "frage": "Haben Sie auch Laubbläser im Sortiment?", "erwartet": "Laubbläser", "sorte": "sortiment"},
+  {"id": 15, "frage": "Was ist das Wetter morgen in Berlin?", "erwartet": "ABGELEHNT", "sorte": "off-topic"},
+  {"id": 16, "frage": "Kannst du mir ein Rezept für Apfelkuchen geben?", "erwartet": "ABGELEHNT", "sorte": "off-topic"},
+  {"id": 17, "frage": "Was ist die Hauptstadt von Frankreich?", "erwartet": "ABGELEHNT", "sorte": "off-topic"}
+]

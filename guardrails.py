@@ -1,7 +1,7 @@
 """
 CP19: Guardrails — Themen-Prüfung vor jeder PIEPS-Antwort.
+Kein output_type / JSON-Schema — reines Text-Urteil (JA/NEIN).
 """
-from pydantic import BaseModel
 from agents import (
     Agent,
     GuardrailFunctionOutput,
@@ -11,24 +11,21 @@ from agents import (
 )
 
 
-class ThemenPruefung(BaseModel):
-    ist_off_topic: bool
-    begruendung: str
-
-
 themen_waechter = Agent(
     name="ThemenWaechter",
     model="mistral-small-4",
     instructions="""Du prüfst ob eine Kundenanfrage zum Thema Grünspecht Gartentechnik gehört.
 
 Erlaubt sind: Fragen zu Mährobotern, Heckenscheren, Laubbläsern, Bestellungen,
-Preisen, Garantie, Ersatzteilen, Lieferung, Öffnungszeiten und Kundenservice.
+Preisen, Garantie, Ersatzteilen, Lieferung, Öffnungszeiten, Kundenservice,
+Fehlercodes, Reparatur, Wartung, Widerrufsrecht und Kaufrecht.
 
 Nicht erlaubt sind: alles andere — Gedichte, Rezepte, Politik, Allgemeinwissen,
 Programmierung, andere Unternehmen, persönliche Beratung usw.
 
-Antworte ausschließlich im vorgegebenen JSON-Format.""",
-    output_type=ThemenPruefung,
+Antworte mit genau einem Wort:
+JA  — wenn die Anfrage NICHTS mit Grünspecht zu tun hat.
+NEIN — wenn die Anfrage zu Grünspecht gehört.""",
 )
 
 
@@ -36,10 +33,11 @@ async def themen_guardrail(
     ctx: RunContextWrapper, agent: Agent, input: str
 ) -> GuardrailFunctionOutput:
     result = await Runner.run(themen_waechter, input, context=ctx.context)
-    pruefung = result.final_output_as(ThemenPruefung)
+    antwort = (result.final_output or "").strip().lower()
+    ist_off_topic = antwort.startswith("ja")
     return GuardrailFunctionOutput(
-        output_info=pruefung,
-        tripwire_triggered=pruefung.ist_off_topic,
+        output_info=antwort,
+        tripwire_triggered=ist_off_topic,
     )
 
 
