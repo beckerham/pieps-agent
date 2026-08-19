@@ -1,5 +1,5 @@
 openai-agents==0.21.1
-python-telegram-bot==22.8
+python-telegram-bot[webhooks]==22.8
 python-dotenv==1.2.3
 supabase==2.31.0
 ollama==0.6.2
