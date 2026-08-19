@@ -3,7 +3,8 @@ from dataclasses import dataclass
 from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
-from agents import Runner, SQLiteSession, InputGuardrailTripwireTriggered
+from agents import Runner, InputGuardrailTripwireTriggered
+from supabase_session import SupabaseSession
 from pieps import pieps
 
 load_dotenv()
@@ -23,10 +24,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     username = update.effective_user.first_name or "Kunde"
     user_input = update.message.text
 
-    session = SQLiteSession(
-        session_id=f"pieps_{chat_id}",
-        db_path="pieps_memory.db",
-    )
+    session = SupabaseSession(session_id=f"pieps_{chat_id}")
 
     run_context = PiepsContext(chat_id=chat_id, username=username)
 
